@@ -5,7 +5,7 @@ This tool allows to get all VOD URLs of a specified user
 ## Installation
 
 ```python
-import twitch-getallvods.py
+from twitch-getallvods import *
 ```
 
 ## Usage
