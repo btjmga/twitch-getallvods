@@ -1,5 +1,7 @@
 import requests
-
+import streamlink
+import subprocess
+import re
 
 MyClientID = '###'
 MyClientSecret = '###'
@@ -39,6 +41,8 @@ def get_userid(username):  # function to retrieve user id of given user
 
 
 userid_var = get_userid(MyUsername)  # define variable for speed
+videos_desc_list = []  # list of titles
+videos_url_list = []  # list of urls
 
 
 def get_videos(cursor=None):  # functiont to retrieve all vod URLs possible, kinda slow for now
@@ -50,6 +54,24 @@ def get_videos(cursor=None):  # functiont to retrieve all vod URLs possible, kin
     reponse_get_videos_json = response_get_videos.json()  # parse and interpret data
     for i in range(0, len(reponse_get_videos_json['data'])):  # parse and interpret data
         print(reponse_get_videos_json['data'][i]['url'])  # parse and interpret data
+        videos_desc_from_json = reponse_get_videos_json['data'][i]['title'] + ' ' + reponse_get_videos_json['data'][i]['created_at']  # list of titles
+        videos_desc_from_json_no_special_chars = re.sub('[^A-Za-z0-9]+', ' ', videos_desc_from_json)  # naming convention
+        videos_desc_list.append(videos_desc_from_json_no_special_chars)  # naming convention
+        videos_url_list.append(reponse_get_videos_json['data'][i]['url'])  # list of urls
     if 'cursor' in reponse_get_videos_json['pagination']:  # check if there are more pages
         get_videos(reponse_get_videos_json['pagination']['cursor'])  # iterate the function until there are no more pages
 
+
+def download_videos(video_desc, video_url):
+    get_videos()
+    user_input = input('Do you want to download all VODs? (y/n): ')
+    if user_input == 'y':
+        for i in range(0, len(video_url)):
+            stream = streamlink.streams(video_url[i])['best'].url
+            download = subprocess.Popen(['streamlink', '-o', video_desc[i] + '.mkv', stream, 'best'])
+            download.wait()
+    elif user_input == 'n':
+        return 0
+    else:
+        print("Wrong choice, start again")
+        download_videos(video_desc, video_url)

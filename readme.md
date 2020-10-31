@@ -1,12 +1,19 @@
 # Twitch-getallvods
 
-This tool allows to get all VOD URLs of a specified user 
+This tool allows to get all VOD URLs of a specified user and/or download them one by one.
+
+Naming convention for downloaded vods is: title + date.
 
 ## Installation
 
-```python
-import twitch-getallvods.py
+```bash
+pip install streamlink
 ```
+Just use the source with import.
+######(Optional):
+If needed for streamlink install Microsoft C++ Build Tools [https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019)
+
+From installation options choose Windows 10 SDK and newest MSVC C++ x64/x86 build tools
 
 ## Usage
 
@@ -21,7 +28,7 @@ MyUsername = '###'
 ```
 This specifies the target user (by twitch.tv username)
 ```python
-get_videos() 
+download_videos(videos_desc_list, videos_url_list) 
 ```
 This method is used to initialize 
 
