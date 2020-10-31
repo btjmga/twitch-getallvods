@@ -12,7 +12,7 @@ pip install streamlink
 
 
 
-And you can use the source with import.
+Use main.py as an import
 
 
 ###### (Optional):
@@ -24,18 +24,16 @@ From installation options choose Windows 10 SDK and newest MSVC C++ x64/x86 buil
 
 Provide variables:
 ```python
-MyClientID = '###'
-MyClientSecret = '###'
+clientID = ''
+clientSecret = ''
 ```
 These can be retrevied by registering an app here: [https://dev.twitch.tv](https://dev.twitch.tv)
 ```python
-MyUsername = '###'
+username = ''
 ```
 This specifies the target user (by twitch.tv username)
-```python
-download_videos(videos_desc_list, videos_url_list) 
-```
-This method is used to initialize 
+
+Run main.py after providing variables
 
 
 ## Contributing
