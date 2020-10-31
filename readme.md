@@ -6,8 +6,13 @@ Naming convention for downloaded vods is: title + date.
 
 ## Installation
 
+<<<<<<< HEAD
 ```bash
 pip install streamlink
+=======
+```python
+from twitch-getallvods import *
+>>>>>>> 48ade4a39a6de3cf13918a40a30a55cdebaa6776
 ```
 Just use the source with import.
 ######(Optional):
