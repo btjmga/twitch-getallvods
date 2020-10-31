@@ -8,14 +8,10 @@ Naming convention for downloaded vods is: title + date.
 
 ```bash
 pip install streamlink
-=======
-```python
-from twitch-getallvods import *
->>>>>>> 48ade4a39a6de3cf13918a40a30a55cdebaa6776
 ```
-Just use the source with import.
+And you can use the source with import.
 
-#(Optional):
+###### (Optional):
 If needed for streamlink install Microsoft C++ Build Tools [https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019)
 
 From installation options choose Windows 10 SDK and newest MSVC C++ x64/x86 build tools
