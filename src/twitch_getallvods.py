@@ -69,7 +69,7 @@ def download_videos(
         for i in range(0, len(video_url)):
             stream = streamlink.streams(video_url[i])["best"].url
             download = subprocess.Popen(
-                ["streamlink", "-o", video_desc[i] + ".mkv", stream, "best"]
+                ["streamlink","--hls-segment-threads", "4", "-o", video_desc[i] + ".mkv", stream, "best"]
             )
             download.wait()
     elif user_input == "n":
